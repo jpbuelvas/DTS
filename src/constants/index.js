@@ -48,19 +48,19 @@ export const navLinks = [
 
 const services = [
 	{
-		title: "Software Developer",
+		title: "Vision",
 		icon: web,
 	},
 	{
-		title: "Frontend Developer",
+		title: "Mision",
 		icon: mobile,
 	},
 	{
-		title: "Backend Developer",
+		title: "Metas",
 		icon: backend,
 	},
 	{
-		title: "Mobile Developer",
+		title: "Objetivos",
 		icon: creator,
 	},
 ]
@@ -284,4 +284,10 @@ const projects = [
 		deploy_link: "https://dts-sistemas.com",
 	},
 ];
-export { services, technologies, experiences, testimonials, projects }
+const descriptions = {
+	Vision: "Le apuntamos cada día a hacer un equipo integral, creativo y que presta sus servicios de la manera más honesta y transparente posible. Queremos ser un aliado tecnológico para todas aquellas empresas que quieran dar un paso más allá en la transformación digital tanto nacional como internacionalmente.",
+	Mision: "Somos un equipo enfocado en la transformación digital empresarial. Buscamos que las empresas de todo tipo puedan agilizar sus procesos internos y externos sacándole el mayor provecho a las tecnologías informáticas actualmente disponibles. Nos concentramos en un proceso creativo y de innovación donde podamos poner a disposición soluciones a las situaciones que se enfrentan todos nuestros clientes de una manera asequible, ágil y de calidad.",
+	Metas: "Lograr un crecimiento continuo y alcanzar nuevos mercados con impacto positivo.",
+	Objetivos: "Establecer estándares de excelencia en cada aspecto de nuestro trabajo.",
+  };
+export { services, technologies, experiences, testimonials, projects,descriptions }

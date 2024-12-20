@@ -1,5 +1,7 @@
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
+import InfoDialog from "./infoDialog"; // Importar el componente de diálogo
 
 // Custom utils
 import { styles } from "../styles";
@@ -7,12 +9,13 @@ import { services } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
 
-const ServiceCard = ({ index, title, icon }) => {
+const ServiceCard = ({ index, title, icon, onClick }) => {
   return (
     <Tilt className="xs:w-[250px] w-full">
       <motion.div
+        onClick={() => onClick(title)} // Llama al evento al hacer clic
         variants={fadeIn("right", "spring", 0.5 * index, 0.75)}
-        className="w-full p-px rounded-[20px] shadow-card green-pink-gradient"
+        className="w-full p-px rounded-[20px] shadow-card green-pink-gradient cursor-pointer"
       >
         <div
           options={{
@@ -33,6 +36,16 @@ const ServiceCard = ({ index, title, icon }) => {
 };
 
 const About = () => {
+  const [openDialog, setOpenDialog] = useState(null); // Maneja el diálogo actual abierto
+
+  const handleDialogOpen = (title) => {
+    setOpenDialog(title); // Abrir el diálogo basado en el título
+  };
+
+  const handleDialogClose = () => {
+    setOpenDialog(null); // Cerrar el diálogo
+  };
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -52,9 +65,23 @@ const About = () => {
 
       <div className="flex flex-wrap gap-10 mt-20">
         {services.map((service, index) => (
-          <ServiceCard key={service.title} index={index} {...service} />
+          <ServiceCard
+            key={service.title}
+            index={index}
+            {...service}
+            onClick={handleDialogOpen} // Pasar evento de clic
+          />
         ))}
       </div>
+
+      {/* Diálogo dinámico */}
+      {openDialog && (
+        <InfoDialog
+          open={!!openDialog}
+          title={openDialog}
+          onClose={handleDialogClose}
+        />
+      )}
     </>
   );
 };
